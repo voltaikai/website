@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /precall
+
+Sitemap: https://voltaikai.com/sitemap.xml
