@@ -2,4 +2,24 @@ User-agent: *
 Allow: /
 Disallow: /precall
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /precall
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /precall
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /precall
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /precall
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /precall
+
 Sitemap: https://voltaikai.com/sitemap.xml
