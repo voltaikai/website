@@ -40,7 +40,16 @@ export default async function handler(request, response) {
 
     const result = await geminiResponse.json();
     if (!geminiResponse.ok) {
-      console.error('Gemini request failed:', result.error?.message || geminiResponse.status);
+      const errorMessage = result.error?.message || `HTTP ${geminiResponse.status}`;
+      console.error('Gemini request failed:', errorMessage);
+      if (geminiResponse.status === 401 || geminiResponse.status === 403) {
+        response.status(503).json({ error: 'The assistant is temporarily misconfigured. Please try again later.' });
+        return;
+      }
+      if (geminiResponse.status === 429) {
+        response.status(503).json({ error: 'The assistant is busy right now. Please try again in a moment.' });
+        return;
+      }
       response.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.' });
       return;
     }
